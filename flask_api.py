@@ -22,9 +22,6 @@ def input_check(input_parameters):
     except ValueError:
         message = "Value error occured: Shape of the input is not matching"
         check = False
-    elif x != 4:
-        message = "Expected 4 features got " + str(x)
-        check = False
     else:
         message = "Success"
         check = True
@@ -49,10 +46,10 @@ class Predict(Resource):
                 result['prediction'] = []
                 result['message'] = message
             
-    return flask.jsonify()
+        return flask.jsonify(result)
 
 api.add_resource(Predict, '/')
 
 if __name__ =='__main__':
-    load_model()
-    api.run(debug = True)
+    load_model('knn_iris_model.pkl')
+    app.run(debug = True)
