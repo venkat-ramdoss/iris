@@ -1,0 +1,10 @@
+name: Iris model 
+
+conda_env: conda.yaml
+
+entry_points:
+ main:
+  parameters:
+   test_size: {type: float, default: 0.5}
+   n_neighbors: {type: int, default: 3}
+  command: "python iris_mlflow_model.py {test_size} {n_neighbors}"
